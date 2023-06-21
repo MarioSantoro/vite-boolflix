@@ -1,7 +1,11 @@
 <template>
-    <main class="d-flex">
-        <AppFilms />
-        <AppSeries />
+    <main>
+        <div class="film ">
+            <AppFilms />
+        </div>
+        <div class="series">
+            <AppSeries />
+        </div>
     </main>
 </template>
 <script>

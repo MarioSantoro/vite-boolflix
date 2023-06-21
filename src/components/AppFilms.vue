@@ -1,35 +1,45 @@
 <template>
     <h1>Films</h1>
-    <ul>
-        <li class="" v-for="(film, index) in  store.listFilms ">
-            <div class="image-background">
-                <img :src="`https://image.tmdb.org/t/p/w500/${film.poster_path}`" alt="">
-            </div>
-            <div class="title d-flex">
-                <h4>Titolo:</h4>
-                <p>{{ film.title }}</p>
-            </div>
-            <div class="title-original d-flex">
-                <h4>Titolo Originale:</h4>
-                <p>{{ film.original_title }}</p>
-            </div>
-            <div class="lang d-flex">
-                <h4>Lingua Originale:</h4>
-                <div v-if="listLanguageImage.includes(film.original_language + '.jpg')">
-                    <img :src="getImagePath(film.original_language + '.jpg')" alt="">
-                </div>
-                <div v-else>
-                    {{ film.original_language }}
-                </div>
-            </div>
-            <div class="vote d-flex">
-                <h4>Voto:</h4>
-                <div class="star" v-for="star in 5">
-                    <div class="full-star" v-if="star <= starsVote[index]">
-                        <i class="fa-solid fa-star"></i>
+    <ul class="d-flex">
+        <li v-for="(film, index) in  store.listFilms ">
+            <div class="flip-card">
+                <div class="card-inner">
+                    <div class="card-front face">
+                        <img :src="`https://image.tmdb.org/t/p/w342/${film.poster_path}`" alt="">
                     </div>
-                    <div v-else class="empty-star">
-                        <i class="fa-regular fa-star"></i>
+                    <div class="card-back face">
+                        <div class="title ">
+                            <h5 class="fw-bold">Titolo:</h5>
+                            <p>{{ film.title }}</p>
+                        </div>
+                        <div class="title-original">
+                            <h5 class="fw-bold">Titolo Originale:</h5>
+                            <p>{{ film.original_title }}</p>
+                        </div>
+                        <div class="lang ">
+                            <h5 class="fw-bold">Lingua Originale:</h5>
+                            <div v-if="listLanguageImage.includes(film.original_language + '.jpg')">
+                                <img :src="getImagePath(film.original_language + '.jpg')" alt="">
+                            </div>
+                            <div v-else>
+                                {{ film.original_language }}
+                            </div>
+                        </div>
+                        <div class="vote d-flex">
+                            <h5 class="fw-bold">Voto:</h5>
+                            <div class="star" v-for="star in 5">
+                                <div class="full-star" v-if="star <= starsVote[index]">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <div v-else class="empty-star">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="overview overflow-auto">
+                            <h5 class="fw-bold">Overview:</h5>
+                            <p class="overflow-auto">{{ film.overview }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -68,4 +78,44 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.flip-card {
+    background-color: transparent;
+    width: 342px;
+    height: 513px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+.card-back {
+    background-color: #000;
+    color: white;
+    transform: rotateY(180deg);
+}
+</style>

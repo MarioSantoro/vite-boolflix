@@ -1,35 +1,45 @@
 <template>
     <h1>Series</h1>
-    <ul>
-        <li class="" v-for="(serie, index) in  store.listSeries ">
-            <div class="image-background">
-                <img :src="`https://image.tmdb.org/t/p/w300/${serie.poster_path}`" alt="Image not found">
-            </div>
-            <div class="title d-flex">
-                <h4>Titolo:</h4>
-                <p>{{ serie.name }}</p>
-            </div>
-            <div class="title-original d-flex">
-                <h4>Titolo Originale:</h4>
-                <p>{{ serie.original_name }}</p>
-            </div>
-            <div class="lang d-flex">
-                <h4>Lingua Originale:</h4>
-                <div v-if="listLanguageImage.includes(serie.original_language + '.jpg')">
-                    <img :src="getImagePath(serie.original_language + '.jpg')" alt="">
-                </div>
-                <div v-else>
-                    {{ serie.original_language }}
-                </div>
-            </div>
-            <div class="vote d-flex">
-                <h4>Voto:</h4>
-                <div class="star" v-for="star in 5">
-                    <div class="full-star" v-if="star <= starsVote[index]">
-                        <i class="fa-solid fa-star"></i>
+    <ul class="d-flex">
+        <li v-for="(serie, index) in  store.listSeries ">
+            <div class="flip-card">
+                <div class="card-inner">
+                    <div class="card-front face">
+                        <img :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`" alt="">
                     </div>
-                    <div v-else class="empty-star">
-                        <i class="fa-regular fa-star"></i>
+                    <div class="card-back face">
+                        <div class="title d-flex">
+                            <h5 class="fw-bold">Titolo:</h5>
+                            <p>{{ serie.name }}</p>
+                        </div>
+                        <div class="title-original d-flex">
+                            <h4>Titolo Originale:</h4>
+                            <p>{{ serie.original_name }}</p>
+                        </div>
+                        <div class="lang d-flex">
+                            <h4>Lingua Originale:</h4>
+                            <div v-if="listLanguageImage.includes(serie.original_language + '.jpg')">
+                                <img :src="getImagePath(serie.original_language + '.jpg')" alt="">
+                            </div>
+                            <div v-else>
+                                {{ serie.original_language }}
+                            </div>
+                        </div>
+                        <div class="vote d-flex">
+                            <h4>Voto:</h4>
+                            <div class="star" v-for="star in 5">
+                                <div class="full-star" v-if="star <= starsVote[index]">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <div v-else class="empty-star">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="overview ">
+                            <h5 class="fw-bold">Overview:</h5>
+                            <p class="overflow-auto m-0">{{ serie.overview }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -68,4 +78,44 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.flip-card {
+    background-color: transparent;
+    width: 342px;
+    height: 513px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+.card-back {
+    background-color: #000;
+    color: white;
+    transform: rotateY(180deg);
+}
+</style>

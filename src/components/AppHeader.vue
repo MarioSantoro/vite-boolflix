@@ -47,7 +47,7 @@ export default {
                 });
 
 
-            axios.get(`https://api.themoviedb.org/3/search/tv?api_key=65244d6f06d68cdb45fac9568796af91&language=it_IT&query=${this.searchedFilm}`)
+            axios.get(`https://api.themoviedb.org/3/search/tv?api_key=65244d6f06d68cdb45fac9568796af91&language=it-IT&query=${this.searchedFilm}`)
                 .then((response) => {
                     store.listSeries = response.data.results;
                     console.log(store.listSeries)

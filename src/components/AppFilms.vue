@@ -24,7 +24,14 @@
             </div>
             <div class="vote d-flex">
                 <h4>Voto:</h4>
-                <p>{{ this.starsVote[index] }}</p>
+                <div class="star" v-for="star in 5">
+                    <div v-if="star <= starsVote[index]">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div v-else>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
             </div>
         </li>
     </ul>
@@ -55,6 +62,9 @@ export default {
             console.log(this.starsVote)
         }
     },
+    beforeUpdate() {
+        this.convertVote();
+    }
 }
 </script>
 <style lang="scss" scoped></style>

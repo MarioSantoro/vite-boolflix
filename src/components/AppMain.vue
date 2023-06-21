@@ -1,10 +1,12 @@
 <template>
-    <main>
+    <main class="d-flex">
         <AppFilms />
+        <AppSeries />
     </main>
 </template>
 <script>
 import AppFilms from './AppFilms.vue';
+import AppSeries from './AppSeries.vue';
 export default {
     data() {
         return {
@@ -12,6 +14,7 @@ export default {
     },
     components: {
         AppFilms,
+        AppSeries
     }
 }   
 </script>

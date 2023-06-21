@@ -3,7 +3,7 @@
     <ul>
         <li class="" v-for="(serie, index) in  store.listSeries ">
             <div class="image-background">
-                <img :src="`https://image.tmdb.org/t/p/w300/${serie.poster_path}`" alt="">
+                <img :src="`https://image.tmdb.org/t/p/w300/${serie.poster_path}`" alt="Image not found">
             </div>
             <div class="title d-flex">
                 <h4>Titolo:</h4>
@@ -25,10 +25,10 @@
             <div class="vote d-flex">
                 <h4>Voto:</h4>
                 <div class="star" v-for="star in 5">
-                    <div v-if="star <= starsVote[index]">
+                    <div class="full-star" v-if="star <= starsVote[index]">
                         <i class="fa-solid fa-star"></i>
                     </div>
-                    <div v-else>
+                    <div v-else class="empty-star">
                         <i class="fa-regular fa-star"></i>
                     </div>
                 </div>

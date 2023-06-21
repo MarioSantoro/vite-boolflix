@@ -1,8 +1,13 @@
-ul {
-    list-style-type: none;
+body {
+    background-color: #181818;
 }
 
-li {
+ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+main li {
     position: relative;
     border: 1px solid black;
     width: 300px;
@@ -21,4 +26,12 @@ div.image-background {
         height: 200px;
         object-fit: cover;
     }
+}
+
+div.full-star {
+    color: yellow;
+}
+
+div.empty-star {
+    color: white;
 }

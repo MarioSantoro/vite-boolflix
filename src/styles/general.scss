@@ -1,3 +1,14 @@
 ul {
     list-style-type: none;
 }
+
+li {
+    border: 1px solid black;
+    width: 35%;
+}
+
+div.lang img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}

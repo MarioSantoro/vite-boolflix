@@ -56,6 +56,7 @@ export default {
             return new URL(`../assets/${img}`, import.meta.url).href;
         },
         convertVote() {
+            this.starsVote = [];
             store.listFilms.forEach(element => {
                 this.starsVote.push(Math.round((element.vote_average / 10) * 5));
             });

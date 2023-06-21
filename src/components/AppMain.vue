@@ -15,7 +15,7 @@ export default {
     components: {
         AppFilms,
         AppSeries
-    }
+    },
 }   
 </script>
 <style lang="scss" scoped></style>

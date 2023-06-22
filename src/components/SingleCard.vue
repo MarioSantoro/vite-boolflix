@@ -43,6 +43,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="actor">
+                    <h4>Actor :</h4>
+                    <p>{{ store.listActor.name }}</p>
+                </div>
                 <div class="overview ">
                     <h5 class="fw-bold">Overview:</h5>
                     <p class="overflow-auto m-0">{{ this.list.overview }}</p>
@@ -76,7 +80,7 @@ export default {
         getImagePath: function (img) {
             return new URL(`../assets/${img}`, import.meta.url).href;
         },
-    },
+    }
 }
 
 </script>

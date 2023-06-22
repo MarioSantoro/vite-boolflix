@@ -33,6 +33,8 @@ export default {
     data() {
         return {
             searchedFilm: "",
+            store,
+            i: 0,
         }
     },
     methods: {
@@ -47,16 +49,26 @@ export default {
                 });
 
 
+
             axios.get(`https://api.themoviedb.org/3/search/tv?api_key=65244d6f06d68cdb45fac9568796af91&language=it-IT&query=${this.searchedFilm}`)
                 .then((response) => {
                     store.listSeries = response.data.results;
-                    console.log(store.listSeries)
                 })
                 .catch(function (error) {
                     console.log(error);
-                })
-        },
-    }
+                });
+            setTimeout(() => {
+                axios.get(`https://api.themoviedb.org/3/movie/${this.store.listFilms[0].id}/credits?language=it-IT&api_key=65244d6f06d68cdb45fac9568796af91`)
+                    .then((response) => {
+                        this.store.listActor = response.data.cast.slice(0, 5);
+                        console.log(this.store.listActor)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }, 1)
+        }
+    },
 }
 </script>
 <style lang="scss">

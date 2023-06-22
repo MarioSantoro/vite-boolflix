@@ -4,5 +4,6 @@ export const store = reactive({
     searchText: "",
     loading: true,
     listFilms: [],
-    listSeries: []
+    listSeries: [],
+    listActor: [],
 });

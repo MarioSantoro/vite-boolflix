@@ -7,6 +7,7 @@
 <script>
 import AppFilms from './AppFilms.vue';
 import AppSeries from './AppSeries.vue';
+
 export default {
     data() {
         return {

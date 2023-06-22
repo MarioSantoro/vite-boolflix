@@ -6,7 +6,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 h1 {
@@ -37,8 +37,9 @@ div.empty-star {
 .flip-card {
     background-color: transparent;
     width: 342px;
-    height: 513px;
+    height: 492px;
     perspective: 1000px;
+    overflow: hidden;
 }
 
 .card-inner {

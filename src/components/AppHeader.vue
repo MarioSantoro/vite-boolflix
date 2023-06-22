@@ -57,16 +57,6 @@ export default {
                 .catch(function (error) {
                     console.log(error);
                 });
-            setTimeout(() => {
-                axios.get(`https://api.themoviedb.org/3/movie/${this.store.listFilms[0].id}/credits?language=it-IT&api_key=65244d6f06d68cdb45fac9568796af91`)
-                    .then((response) => {
-                        this.store.listActor = response.data.cast.slice(0, 5);
-                        console.log(this.store.listActor)
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            }, 1)
         }
     },
 }

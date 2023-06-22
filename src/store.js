@@ -1,3 +1,4 @@
+
 import { reactive } from "vue";
 
 export const store = reactive({
@@ -5,5 +6,8 @@ export const store = reactive({
     loading: true,
     listFilms: [],
     listSeries: [],
-    listActor: [],
+    listActorFilm: [],
+    listActorSeries: [],
+    listGenFilm: [],
+    listGenSeries: [],
 });

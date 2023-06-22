@@ -34,7 +34,7 @@ export default {
             axios.get(`https://api.themoviedb.org/3/movie/${item}/credits?api_key=65244d6f06d68cdb45fac9568796af91&language=it-IT`)
                 .then((response) => {
                     store.listActorFilm = response.data.cast.slice(0, 5);
-                    console.log(store.listActorFilm)
+
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -44,7 +44,7 @@ export default {
             axios.get(`https://api.themoviedb.org/3/movie/${item}?api_key=65244d6f06d68cdb45fac9568796af91&language=it-IT`)
                 .then((response) => {
                     store.listGenFilm = response.data.genres;
-                    console.log(store.listGenFilm)
+
                 })
                 .catch(function (error) {
                     console.log(error);

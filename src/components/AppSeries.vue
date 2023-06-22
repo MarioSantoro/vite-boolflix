@@ -3,7 +3,7 @@
     <ul class="d-flex">
         <li v-for="(serie, index) in  store.listSeries ">
             <SingleCard :list="serie" :index="index" :starList="starsVote" :listActor="store.listActorSeries"
-                :listGen="store.listGenSeries" @mouseenter="getActor(serie.id)" />
+                :listGen="store.listGenSeries" @mouseenter="getActorAndGen(serie.id)" />
         </li>
     </ul>
 </template>
@@ -30,7 +30,7 @@ export default {
             });
         },
 
-        getActor(item) {
+        getActorAndGen(item) {
             axios.get(`https://api.themoviedb.org/3/tv/${item}/credits?api_key=65244d6f06d68cdb45fac9568796af91&language=it-IT`)
                 .then((response) => {
                     store.listActorSeries = response.data.cast.slice(0, 5);

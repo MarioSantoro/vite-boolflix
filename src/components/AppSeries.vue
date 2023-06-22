@@ -2,7 +2,7 @@
     <h1>Series</h1>
     <ul class="d-flex">
         <li v-for="(serie, index) in  store.listSeries ">
-            <div class="flip-card">
+            <div class="flip-card me-3">
                 <div class="card-inner">
                     <div class="card-front face">
                         <img :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`" alt="">

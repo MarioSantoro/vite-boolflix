@@ -1,11 +1,7 @@
 <template>
     <main>
-        <div class="film ">
-            <AppFilms />
-        </div>
-        <div class="series">
-            <AppSeries />
-        </div>
+        <AppFilms />
+        <AppSeries />
     </main>
 </template>
 <script>

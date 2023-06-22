@@ -2,7 +2,7 @@
     <h1>Films</h1>
     <ul class="d-flex">
         <li v-for="(film, index) in  store.listFilms ">
-            <div class="flip-card">
+            <div class="flip-card me-3">
                 <div class="card-inner">
                     <div class="card-front face">
                         <img :src="`https://image.tmdb.org/t/p/w342/${film.poster_path}`" alt="">

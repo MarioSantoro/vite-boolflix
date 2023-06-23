@@ -1,14 +1,14 @@
-<template>
-    <h1>Films</h1>
+<template >
+    <h1>Top Rated</h1>
     <ul class="d-flex">
-        <li v-for="(film, index) in  store.listFilms ">
-            <SingleCard :list="film" :index="index" :starList="starsVote" :listActor="store.listActorFilm"
-                :listGen="store.listGenFilm" @mouseenter.prevent="getActorAndGen(film.id)" />
+        <li v-for="(TopRated, index) in  store.listFilmsTopRated ">
+            <SingleCard :list="TopRated" :index="index" :starList="starsVote" :listActor="store.listActorFilm"
+                :listGen="store.listGenFilm" @mouseenter.prevent="getActorAndGen(TopRated.id)" />
         </li>
     </ul>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios';
 import { store } from "../store.js"
 import SingleCard from "./SingleCard.vue";
 export default {
@@ -22,11 +22,21 @@ export default {
     components: {
         SingleCard,
     },
-
     methods: {
+        getFilmTopRated() {
+            axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=65244d6f06d68cdb45fac9568796af91&language=it-I`)
+                .then((response) => {
+                    store.listFilmsTopRated = response.data.results;
+                    console.log(store.listFilmsTopRated)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+
         convertVote() {
             this.starsVote = [];
-            store.listFilms.forEach(element => {
+            store.listFilmsTopRated.forEach(element => {
                 this.starsVote.push(Math.round((element.vote_average / 10) * 5));
             });
         },
@@ -51,6 +61,10 @@ export default {
                 });
         },
     },
+    mounted() {
+        this.getFilmTopRated();
+    },
+
     beforeUpdate() {
         this.convertVote();
     }

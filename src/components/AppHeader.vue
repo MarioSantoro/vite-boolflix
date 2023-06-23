@@ -5,7 +5,7 @@
                 <img src="../assets/netflix-logo.webp" alt="">
                 <div class="nav-bar-links text-white">
                     <ul class="d-flex ">
-                        <li class="ms-5">Home</li>
+                        <li class="ms-5"><a @click="goToHome" href="#">Home</a></li>
                         <li class="ms-5">Serie Tv</li>
                         <li class="ms-5">Film</li>
                         <li class="ms-5">Originali</li>
@@ -57,6 +57,9 @@ export default {
                 .catch(function (error) {
                     console.log(error);
                 });
+        },
+        goToHome() {
+            store.listFilms = [];
         }
     },
 }

@@ -1,10 +1,12 @@
 <template>
     <h1>Series</h1>
-    <ul class="d-flex">
+    <ul class="d-flex  scroll-images-series align-items-center justify-content-between">
+        <i @click="leftScroll" class="fa-solid fa-angle-left fa-xl left text-white"></i>
         <li v-for="(serie, index) in  store.listSeries ">
             <SingleCard :list="serie" :index="index" :starList="starsVote" :listActor="store.listActorSeries"
                 :listGen="store.listGenSeries" @mouseenter="getActorAndGen(serie.id)" />
         </li>
+        <i @click="rightScroll" class="fa-solid fa-angle-right fa-xl right text-white"></i>
     </ul>
 </template>
 <script>
@@ -49,6 +51,16 @@ export default {
                 });
         },
 
+        leftScroll() {
+            const left = document.querySelector(".scroll-images-series");
+            left.scrollBy(-1000, 0);
+        },
+
+        rightScroll() {
+            const right = document.querySelector(".scroll-images-series");
+            right.scrollBy(1000, 0);
+        }
+
     },
 
     beforeUpdate() {
@@ -56,4 +68,23 @@ export default {
     },
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.left {
+    position: absolute;
+    left: 10px;
+    bottom: -50px;
+    transform: translateY(-50%);
+    z-index: 3;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.right {
+    position: absolute;
+    right: 10px;
+    bottom: -50px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+</style>

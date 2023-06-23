@@ -69,6 +69,11 @@ nav {
     padding: 1rem;
     background-color: #000;
 
+    li a {
+        color: white;
+        text-decoration: none;
+    }
+
     div.searchbar {
         input {
             border-radius: 1rem;

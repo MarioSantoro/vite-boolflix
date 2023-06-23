@@ -92,3 +92,8 @@ div.empty-star {
     color: white;
     transform: rotateY(180deg);
 }
+
+.left:hover,
+.right:hover {
+    transform: scale(1.5);
+}

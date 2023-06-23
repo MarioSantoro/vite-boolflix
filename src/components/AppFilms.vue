@@ -76,6 +76,9 @@ export default {
     transform: translateY(-50%);
     z-index: 3;
     cursor: pointer;
+    transition: all .5s ease;
+    text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+        0px -4px 10px rgba(255, 255, 255, 0.3);
 }
 
 .right {
@@ -84,5 +87,8 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    transition: all .5s ease;
+    text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+        0px -4px 10px rgba(255, 255, 255, 0.3);
 }
 </style>

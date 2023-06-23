@@ -1,10 +1,12 @@
 <template >
     <h1>Top Rated</h1>
-    <ul class="d-flex">
+    <ul class="d-flex scroll-images-film">
+        <i @click="leftScroll" class="fa-solid fa-angle-left fa-xl left text-white"></i>
         <li v-for="(TopRated, index) in  store.listFilmsTopRated ">
             <SingleCard :list="TopRated" :index="index" :starList="starsVote" :listActor="store.listActorFilm"
                 :listGen="store.listGenFilm" @mouseenter.prevent="getActorAndGen(TopRated.id)" />
         </li>
+        <i @click="rightScroll" class="fa-solid fa-angle-right fa-xl right text-white"></i>
     </ul>
 </template>
 <script>
@@ -60,6 +62,16 @@ export default {
                     console.log(error);
                 });
         },
+
+        leftScroll() {
+            const left = document.querySelector(".scroll-images-film");
+            left.scrollBy(-1000, 0);
+        },
+
+        rightScroll() {
+            const right = document.querySelector(".scroll-images-film");
+            right.scrollBy(1000, 0);
+        }
     },
     mounted() {
         this.getFilmTopRated();
@@ -70,4 +82,32 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.left {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    cursor: pointer;
+    transition: all .5s ease;
+    text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+        0px -4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.right {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all .5s ease;
+    text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+        0px -4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.left:hover,
+.right:hover {
+    transform: scale(1.5);
+}
+</style>

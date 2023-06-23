@@ -14,6 +14,7 @@
                     </ul>
                 </div>
             </div>
+            <Filter @select="getFilmsAndSeriesSelected" />
             <div class="searchbar d-flex align-items-center">
                 <input type="search" v-model="this.searchedFilm">
                 <i @click="getFilmsAndSeries" class="fa-solid fa-magnifying-glass text-white ms-3"></i>
@@ -29,6 +30,7 @@
 <script>
 import axios from 'axios';
 import { store } from "../store.js"
+import Filter from './Filter.vue';
 export default {
     data() {
         return {
@@ -37,6 +39,11 @@ export default {
             i: 0,
         }
     },
+
+    components: {
+        Filter,
+    },
+
     methods: {
         getFilmsAndSeries() {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65244d6f06d68cdb45fac9568796af91&language=it-IT&query=${this.searchedFilm}`)
@@ -58,6 +65,27 @@ export default {
                     console.log(error);
                 });
         },
+
+        getFilmsAndSeriesSelected(neddle) {
+            axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=65244d6f06d68cdb45fac9568796af91&include_adult=true&include_video=false&language=it-IT&page=1&sort_by=popularity.desc&with_genres=${neddle}`)
+                .then((response) => {
+                    store.listFilms = response.data.results;
+                    console.log(store.listFilms)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=65244d6f06d68cdb45fac9568796af91&language=it-IT&page=1&sort_by=popularity.desc&with_genres=${neddle}`)
+                .then((response) => {
+                    store.listSeries = response.data.results;
+                    console.log(response.data.results)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+
         goToHome() {
             store.listFilms = [];
         }

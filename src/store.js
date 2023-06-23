@@ -10,5 +10,6 @@ export const store = reactive({
     listActorSeries: [],
     listGenFilm: [],
     listGenSeries: [],
-    listFilmsTopRated: []
+    listFilmsTopRated: [],
+    listAllGen: [],
 });

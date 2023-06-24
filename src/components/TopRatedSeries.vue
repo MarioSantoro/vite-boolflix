@@ -1,8 +1,8 @@
 <template >
-    <h1>Top Rated Film</h1>
-    <ul class="d-flex scroll-images-film">
+    <h1>Top Rated Series</h1>
+    <ul class="d-flex scroll-images-series">
         <i @click="leftScroll" class="fa-solid fa-angle-left fa-xl left text-white"></i>
-        <li v-for="(TopRated, index) in  store.listFilmsTopRated ">
+        <li v-for="(TopRated, index) in  store.listSeriesTopRated ">
             <SingleCard :list="TopRated" :index="index" :starList="starsVote" :listActor="store.listActorFilm"
                 :listGen="store.listGenFilm" @mouseenter.prevent="getActorAndGen(TopRated.id)" />
         </li>
@@ -26,10 +26,10 @@ export default {
     },
     methods: {
         getFilmTopRated() {
-            axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=65244d6f06d68cdb45fac9568796af91&language=it-I`)
+            axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=65244d6f06d68cdb45fac9568796af91&language=it-I`)
                 .then((response) => {
-                    store.listFilmsTopRated = response.data.results;
-                    console.log(store.listFilmsTopRated)
+                    store.listSeriesTopRated = response.data.results;
+                    console.log(store.listSeriesTopRated)
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -38,7 +38,7 @@ export default {
 
         convertVote() {
             this.starsVote = [];
-            store.listFilmsTopRated.forEach(element => {
+            store.listSeriesTopRated.forEach(element => {
                 this.starsVote.push(Math.round((element.vote_average / 10) * 5));
             });
         },
@@ -64,12 +64,12 @@ export default {
         },
 
         leftScroll() {
-            const left = document.querySelector(".scroll-images-film");
+            const left = document.querySelector(".scroll-images-series");
             left.scrollBy(-1000, 0);
         },
 
         rightScroll() {
-            const right = document.querySelector(".scroll-images-film");
+            const right = document.querySelector(".scroll-images-series");
             right.scrollBy(1000, 0);
         }
     },
@@ -86,7 +86,7 @@ export default {
 .left {
     position: absolute;
     left: 10px;
-    top: 50%;
+    bottom: -50px;
     transform: translateY(-50%);
     z-index: 3;
     cursor: pointer;
@@ -98,7 +98,7 @@ export default {
 .right {
     position: absolute;
     right: 10px;
-    top: 50%;
+    bottom: -50px;
     transform: translateY(-50%);
     cursor: pointer;
     transition: all .5s ease;

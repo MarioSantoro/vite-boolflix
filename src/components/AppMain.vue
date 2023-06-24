@@ -1,6 +1,9 @@
 <template>
     <main>
-        <TopRatedFilms v-if="store.listFilms.length === 0" />
+        <div v-if="store.listFilms.length === 0">
+            <TopRatedFilms />
+            <TopRatedSeries />
+        </div>
         <div v-else>
             <AppFilms />
             <AppSeries />
@@ -11,6 +14,7 @@
 import AppFilms from './AppFilms.vue';
 import AppSeries from './AppSeries.vue';
 import TopRatedFilms from './TopRatedFilms.vue';
+import TopRatedSeries from './TopratedSeries.vue';
 import { store } from "../store.js"
 export default {
     data() {
@@ -22,6 +26,7 @@ export default {
         AppFilms,
         AppSeries,
         TopRatedFilms,
+        TopRatedSeries
     },
     methods: {
 

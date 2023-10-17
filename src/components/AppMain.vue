@@ -23,7 +23,7 @@
 <script>
 import AppFilms from './AppFilms.vue';
 import AppSeries from './AppSeries.vue';
-import AppTopRatedFilms from './TopRatedfilms.vue';
+import AppTopRatedFilms from './topRatedFilms.vue';
 import AppTopRatedSeries from './TopRatedSeries.vue';
 import { store } from "../store.js"
 export default {

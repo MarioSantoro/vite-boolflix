@@ -2,8 +2,8 @@
     <main>
         <div v-if="store.listFilms.length === 0">
             <div class="listCard" v-if="(store.listFilmsTopRated.length >= 0)">
-                <TopRatedFilms />
-                <TopRatedSeries />
+                <AppTopRatedFilms />
+                <AppTopRatedSeries />
             </div>
             <div class="loader" v-else>
                 <Loader />
@@ -23,9 +23,8 @@
 <script>
 import AppFilms from './AppFilms.vue';
 import AppSeries from './AppSeries.vue';
-import TopRatedFilms from './TopRatedFilms.vue';
-import TopRatedSeries from './TopRatedSeries.vue';
-import Loader from './Loader.vue';
+import AppTopRatedFilms from './TopRatedfilms.vue';
+import AppTopRatedSeries from './TopRatedSeries.vue';
 import { store } from "../store.js"
 export default {
     data() {
@@ -36,9 +35,8 @@ export default {
     components: {
         AppFilms,
         AppSeries,
-        TopRatedFilms,
-        TopRatedSeries,
-        Loader,
+        AppTopRatedFilms,
+        AppTopRatedSeries
     },
     methods: {
 

@@ -73,7 +73,7 @@ export default {
             right.scrollBy(1000, 0);
         }
     },
-    mounted() {
+    created() {
         this.getFilmTopRated();
     },
 

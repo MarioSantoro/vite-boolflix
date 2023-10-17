@@ -16,7 +16,7 @@
             </div>
             <Filter @select="getFilmsAndSeriesSelected" />
             <div class="searchbar d-flex align-items-center">
-                <input type="search" v-model="this.searchedFilm">
+                <input @keyup.enter.prevent="getFilmsAndSeries" type="search" v-model="this.searchedFilm">
                 <i @click="getFilmsAndSeries" class="fa-solid fa-magnifying-glass text-white ms-3"></i>
             </div>
             <div class="image-profile d-flex align-items-center">
@@ -46,7 +46,7 @@ export default {
 
     methods: {
         getFilmsAndSeries() {
-            axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65244d6f06d68cdb45fac9568796af91&language=it-IT&query=${this.searchedFilm}`)
+            axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65244d6f06d68cdb45fac9568796af91&include_adult=false&language=it-IT&query=${this.searchedFilm}`)
                 .then((response) => {
                     store.listFilms = response.data.results;
                     console.log(store.listFilms)
@@ -57,7 +57,7 @@ export default {
 
 
 
-            axios.get(`https://api.themoviedb.org/3/search/tv?api_key=65244d6f06d68cdb45fac9568796af91&language=it-IT&query=${this.searchedFilm}`)
+            axios.get(`https://api.themoviedb.org/3/search/tv?api_key=65244d6f06d68cdb45fac9568796af91&include_adult=false&language=it-IT&query=${this.searchedFilm}`)
                 .then((response) => {
                     store.listSeries = response.data.results;
                 })
@@ -67,7 +67,7 @@ export default {
         },
 
         getFilmsAndSeriesSelected(neddle) {
-            axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=65244d6f06d68cdb45fac9568796af91&include_adult=true&include_video=false&language=it-IT&page=1&sort_by=popularity.desc&with_genres=${neddle}`)
+            axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=65244d6f06d68cdb45fac9568796af91&include_adult=true&include_video=true&language=it-IT&page=1&sort_by=popularity.desc&with_genres=${neddle}`)
                 .then((response) => {
                     store.listFilms = response.data.results;
                     console.log(store.listFilms)

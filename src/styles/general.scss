@@ -25,11 +25,16 @@ ul {
 .scroll-images-film {
     scrollbar-width: none;
     overflow-x: auto;
+    scroll-snap-type: x mandatory;
 }
 
 h1 {
     color: white;
     margin: 1rem 0;
+}
+
+h4 {
+    font-weight: bolder;
 }
 
 
@@ -88,6 +93,7 @@ div.empty-star {
 }
 
 .card-back {
+    padding-left: .88rem;
     background-color: #000;
     color: white;
     transform: rotateY(180deg);
